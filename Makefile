@@ -2,24 +2,30 @@
 
 .SILENT:
 
-all: literate.sh.pdf literate.sh.html \
-	 literate.py.pdf literate.py.html \
-	 literate.java.pdf literate.java.html \
-	 literate.c.pdf literate.c.html
+SH = literate.sh.pdf literate.sh.html
+PY = literate.py.pdf literate.py.html
+JAVA = literate.java.pdf literate.java.html
+C = literate.c.pdf literate.c.html
 
-# required: yum install pandoc texlive discount
+########################################################################
+# Rules
+########################################################################
 
-literate.sh.pdf:  literate.sh.md; pandoc $? -o $@
-literate.sh.html: literate.sh.md; markdown < $? > $@
-literate.py.pdf:  literate.py.md; pandoc $? -o $@
-literate.py.html: literate.py.md; markdown < $? > $@
-literate.java.pdf:   literate.java.md; pandoc $? -o $@
-literate.java.html:  literate.java.md; markdown < $? > $@
-literate.c.pdf:   literate.c.md; pandoc $? -o $@
-literate.c.html:  literate.c.md; markdown < $? > $@
+all: $(SH) $(PY) $(JAVA) $(C)
 
-# required: sh, python, cc, javac
+# required: yum install discount
+%.html: %.md
+	markdown < $< > $@
 
+# required: yum install pandoc texlive
+%.pdf: %.md
+	pandoc $< -o $@
+
+########################################################################
+# Utilities
+########################################################################
+
+# required: sh, python, cc, java
 run:
 	./run-md literate.sh.md
 	./run-md literate.py.md

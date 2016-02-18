@@ -37,8 +37,7 @@ done < "$PROGRAM" | case "$PROGRAM" in
         ;;
     *.java.md)
         cat > ${PROGRAM%.md}
-        javac ${PROGRAM%.md}
-        java ${PROGRAM%.java.md}
+        javac ${PROGRAM%.md} && java ${PROGRAM%.java.md}
         ;;
     *)
         cat -
