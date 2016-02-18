@@ -29,31 +29,18 @@ Thats all Folks!
 
 ## How to publish?
 
-Install a plugin for Markdown in you browser or convert this file using any
-Markdown conversor, like:
+Install MarkDown processors:
 
+    sudo yum -y install pandoc texlive discount
 
-```
-sudo yum -y install discount elinks
-markdown < literate.py.md >| literate.py.html
-elinks literate.py.html
-```
+and execute `make build` in this directory!  HTML and PDF output formats are
+generated. Check with any HTML browser and PDF viewer:
 
-Using PDF?
-
-```
-sudo yum -y install pandoc texlive evince
-pandoc literate.py.md -o literate.py.pdf
-evince literate.py.pdf
-```
-
-Or simply run `make` in this directory!
-
-## But, who is Donald Knuth?
-
-Are you kidding me?
+	elinks literate.py.html
+	evince literate.py.pdf
 
 ![That's all Folks!](Thats_all_folks.png)
+
 <!--
 vim:ai:et:sw=4:ts=4:syntax=markdown
 -->

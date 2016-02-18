@@ -30,29 +30,15 @@ Thats all Folks!
 
 ## How to publish?
 
-Install a plugin for Markdown in you browser or convert this file using any
-Markdown conversor, like:
+Install MarkDown processors:
 
+    sudo yum -y install pandoc texlive discount
 
-```
-sudo yum -y install discount elinks
-markdown < literate.sh.md >| literate.sh.html
-elinks literate.sh.html
-```
+and execute `make build` in this directory!  HTML and PDF output formats are
+generated. Check with any HTML browser and PDF viewer:
 
-Using PDF?
-
-```
-sudo yum -y install pandoc texlive evince
-pandoc literate.sh.md -o literate.sh.pdf
-evince literate.sh.pdf
-```
-
-Or simply run `make` in this directory!
-
-## But, who is Donald Knuth?
-
-Are you kidding me?
+	elinks literate.sh.html
+	evince literate.sh.pdf
 
 ![That's all Folks!](Thats_all_folks.png)
 
