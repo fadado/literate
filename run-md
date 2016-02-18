@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Run programs embeded into MarkDown documents
+
+PROGRAM=${1?Expected program filename}
+
+case "$PROGRAM" in
+    *.sh.md) RUN="sh"
+        ;;
+    *.py.md) RUN="python -"
+        ;;
+esac
+
+echo 1>&2 ">>> Running: $PROGRAM"
+
+< "$PROGRAM" \
+    sed -e 's/^[^ \t].*//' \
+        -e 's/^\(    \|\t\)//g' \
+    | $RUN
+
+exit
+
+# vim:ai:et:sw=4:ts=4:syntax=sh

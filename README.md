@@ -1,2 +1,5 @@
-# literate
-Literate programming using MarkDown
+# Literate
+
+Literate programming using MarkDown.
+
+Several examples are provided.
