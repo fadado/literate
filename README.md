@@ -27,11 +27,15 @@ viewer:
 	elinks literate.py.html
 	evince literate.sh.pdf
 	evince literate.py.pdf
+	evince literate.c.pdf
+	evince literate.c.pdf
 
 ## How to write programs?
 
 Write MarkDown files with the code to be executed inside triple backtick blocks.
-The file extension must be `.sh.md` or `.py.md`.
+The supported file extensions (and related languages) are `.sh.md`, `.py.md` and `.c.md`.
+
+![That's all Folks!](Thats_all_folks.png)
 
 <!--
 vim:et:ai:sw=4:ts=4:syntax=markdown
