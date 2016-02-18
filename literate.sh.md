@@ -14,7 +14,9 @@ More about _literate programming_:
 
 The simplest Shell program:
 
-    echo 'Thats all Folks!'
+```
+echo 'Thats all Folks!'
+```
 
 Fancy, doensn't it?
 
@@ -22,11 +24,9 @@ Fancy, doensn't it?
 
 Simply run this command in the Shell:
 
-```
-$ ./run-md literate.sh.md 
->>> Running: literate.sh.md
-Thats all Folks!
-```
+    $ ./run-md literate.sh.md 
+    >>> Running: literate.sh.md
+    Thats all Folks!
 
 ## How to publish?
 

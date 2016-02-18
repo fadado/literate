@@ -13,7 +13,9 @@ More about _literate programming_:
 
 The simplest Python program:
 
-    print('Thats all Folks!')
+```
+print('Thats all Folks!')
+```
 
 Fancy, doensn't it?
 
@@ -21,11 +23,9 @@ Fancy, doensn't it?
 
 Simply run this command in the Shell:
 
-```
-$ ./run-md literate.py.md 
->>> Running: literate.py.md
-Thats all Folks!
-```
+    $ ./run-md literate.py.md 
+    >>> Running: literate.py.md
+    Thats all Folks!
 
 ## How to publish?
 
