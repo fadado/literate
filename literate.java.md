@@ -1,8 +1,7 @@
-# Shell literate example
+# Java literate example
 
-This is an example of Shell programming, in the style promoted by Knuth called
-_literate programming_.  The text is encoded using Markdown, and the
-programming language used is the Unix Shell.
+This is an example of Java programming, in the style promoted by Knuth called
+_literate programming_.  The text is encoded using Markdown.
 
 More about _literate programming_:
 
@@ -12,10 +11,14 @@ More about _literate programming_:
 
 ## The program
 
-The simplest Shell program:
+The simplest Java program:
 
 ```
-echo "That's all Folks!"
+public class literate {
+    public static void main(String[] args) {
+        System.out.println("That's all Folks!");
+    }
+}
 ```
 
 Fancy, doensn't it?
@@ -24,8 +27,8 @@ Fancy, doensn't it?
 
 Simply run this command in the Shell:
 
-    $ ./run-md literate.sh.md 
-    >>> Running: literate.sh.md
+    $ ./run-md literate.java.md 
+    >>> Running: literate.java.md
     That's all Folks!
 
 ## How to publish?
@@ -37,8 +40,8 @@ Install MarkDown processors:
 and execute `make build` in this directory!  HTML and PDF output formats are
 generated. Check with any HTML browser and PDF viewer:
 
-	elinks literate.sh.html
-	evince literate.sh.pdf
+	elinks literate.java.html
+	evince literate.java.pdf
 
 ![That's all Folks!](Thats_all_folks.png)
 

@@ -2,3 +2,5 @@
 *.html
 a.out
 *.o
+*.java
+*.class

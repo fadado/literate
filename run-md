@@ -9,6 +9,7 @@ typeset -i onblock=0
 
 echo 1>&2 ">>> Running: $PROGRAM"
 
+IFS=''
 while read -r line; do
     if [[ $line == '```'* ]]; then
         if (( onblock )); then
@@ -34,7 +35,14 @@ done < "$PROGRAM" | case "$PROGRAM" in
     *.c.md)
         gcc -x c - && ./a.out
         ;;
-    *) cat - ;;
+    *.java.md)
+        cat > ${PROGRAM%.md}
+        javac ${PROGRAM%.md}
+        java ${PROGRAM%.java.md}
+        ;;
+    *)
+        cat -
+        ;;
 esac
 
 

@@ -18,7 +18,7 @@ The simplest C program:
 
 int main(int argc, char **argv)
 {
-    printf("Thats all Folks!\n");
+    printf("That's all Folks!\n");
     return 0;
 }
 ```
@@ -31,7 +31,7 @@ Simply run this command in the Shell:
 
     $ ./run-md literate.c.md 
     >>> Running: literate.c.md
-    Thats all Folks!
+    That's all Folks!
 
 ## How to publish?
 
