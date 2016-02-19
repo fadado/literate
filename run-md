@@ -4,14 +4,18 @@
 # Run code embeded into MarkDown documents
 #
 
+shopt -s expand_aliases
+
+alias say='echo 1>&2'
+
 # $1 is a MarkDown document
-typeset -r PROGRAM=${1?Expected program filename}
+declare -r PROGRAM=${1?Expected program filename}
+declare -r CODE=/tmp/${PROGRAM%.md}
 shift
 
 # Extract code
-typeset -r CODE=/tmp/${PROGRAM%.md}
-typeset -i onblock=0
-typeset line
+declare -i onblock=0
+declare line=''
 
 IFS=''
 while read -r line; do
@@ -31,31 +35,38 @@ while read -r line; do
     fi
 done < "$PROGRAM" > "$CODE"
 
-
-RUN=">>> Running $PROGRAM (temporary files left at /tmp:"
+declare -r RUNNING=">>> Running $PROGRAM; temporary files left at /tmp:"
 
 case "$PROGRAM" in
     *.sh.md)
-        echo 1>&2 "$RUN ${PROGRAM%.md})"
-        exec bash "$CODE" "$@"
+        say "$RUNNING ${PROGRAM%.md}"
+        bash "$CODE" "$@"
         ;;
     *.py.md)
-        echo 1>&2 "$RUN ${PROGRAM%.md})"
-        exec python "$CODE" "$@"
+        say "$RUNNING ${PROGRAM%.md}"
+        python "$CODE" "$@"
         ;;
-    *.c.md|*.cpp.md)
-        echo 1>&2 "$RUN ${PROGRAM%.md} and a.out)"
-        gcc "$CODE" -o /tmp/a.out && exec /tmp/a.out "$@"
+    *.pl.md)
+        say "$RUNNING ${PROGRAM%.md}"
+        perl "$CODE" "$@"
+        ;;
+    *.c.md)
+        say "$RUNNING ${PROGRAM%.md} and a.out"
+        gcc "$CODE" -o /tmp/a.out && /tmp/a.out "$@"
+        ;;
+    *.cpp.md|*.cxx.md)
+        say "$RUNNING ${PROGRAM%.md} and a.out"
+        g++ "$CODE" -o /tmp/a.out && /tmp/a.out "$@"
         ;;
     *.java.md)
-        echo 1>&2 "$RUN ${PROGRAM%.md} and ${PROGRAM%.java.md}.class)"
+        say "$RUNNING ${PROGRAM%.md} and ${PROGRAM%.java.md}.class"
         javac -d /tmp "$CODE" && cd /tmp && java "${PROGRAM%.java.md}" "$@"
         ;;
-    *)
-        exec cat "$CODE"
+    *)  # unsupported language: only expand
+        cat "$CODE"
         ;;
 esac
 
-exit    # never reached
+exit
 
 # vim:ai:et:sw=4:ts=4:syntax=sh

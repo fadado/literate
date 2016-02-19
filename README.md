@@ -10,6 +10,8 @@ Execute
 
 	./run-md literate.sh.md
 	./run-md literate.py.md
+	./run-md literate.java.md
+    # etcetera
 
 or simply execute `make run`.
 
@@ -26,8 +28,7 @@ viewer.
 ## How to write programs?
 
 Write MarkDown files with the code to be executed inside triple backtick blocks.
-The supported file extensions (and related languages) are `.sh.md`, `.py.md`,
-`.java.md` and `.c.md`.
+To know the supported file extensions (and related languages) study the file `run-md`.
 
 ![That's all Folks!](Thats_all_folks.png)
 

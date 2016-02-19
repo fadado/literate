@@ -2,11 +2,16 @@
 
 .SILENT:
 
-FORMATS = pdf html odt
-LANGUAGES = sh py c java
+# output file formats
+# add any format supported by pandoc: pdf, html, odt, docx...
+FORMATS = pdf html
 
-FILES = $(foreach format,$(FORMATS),literate.$(lang).$(format))
-TARGETS := $(foreach lang,$(LANGUAGES),$(FILES))
+# languages supported
+LANGUAGES = sh pl py c cpp java
+
+# build all filename targets
+FILES = $(foreach _format,$(FORMATS),literate.$(_lang).$(_format))
+TARGETS = $(foreach _lang,$(LANGUAGES),$(FILES))
 
 ########################################################################
 # Rules
@@ -27,19 +32,19 @@ SYNTAX = -s --highlight-style pygments
 %.odt: %.md
 	pandoc $< $(SYNTAX) -o $@
 
+%.docx: %.md
+	pandoc $< $(SYNTAX) -o $@
+
 ########################################################################
 # Utilities
 ########################################################################
 
-# required: sh, python, cc, java
+# required: sh, perl, python, gcc, gcc-c++, java...
 run:
-	./run-md literate.sh.md
-	./run-md literate.py.md
-	./run-md literate.c.md
-	./run-md literate.java.md
+	$(foreach _lang,$(LANGUAGES),./run-md literate.$(_lang).md;)
 
 clean:
-	rm -f *.pdf *.html *.java *.class *.o a.out
+	rm -f $(foreach _format,$(FORMATS),*.$(_format))
 
 build: clean all
 
