@@ -2,16 +2,17 @@
 
 .SILENT:
 
-SH = literate.sh.pdf literate.sh.html
-PY = literate.py.pdf literate.py.html
-JAVA = literate.java.pdf literate.java.html
-C = literate.c.pdf literate.c.html
+FORMATS = pdf html odt
+LANGUAGES = sh py c java
+
+FILES = $(foreach format,$(FORMATS),literate.$(lang).$(format))
+TARGETS := $(foreach lang,$(LANGUAGES),$(FILES))
 
 ########################################################################
 # Rules
 ########################################################################
 
-all: $(SH) $(PY) $(JAVA) $(C)
+all: $(TARGETS)
 
 # required: yum install pandoc texlive
 
@@ -21,6 +22,9 @@ SYNTAX = -s --highlight-style pygments
 	pandoc $< $(SYNTAX) -o $@
 
 %.pdf: %.md
+	pandoc $< $(SYNTAX) -o $@
+
+%.odt: %.md
 	pandoc $< $(SYNTAX) -o $@
 
 ########################################################################
