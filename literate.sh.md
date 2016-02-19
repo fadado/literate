@@ -14,7 +14,7 @@ More about _literate programming_:
 
 The simplest Shell program:
 
-```
+```sh
 echo "That's all Folks!"
 ```
 
@@ -32,7 +32,7 @@ Simply run this command in the Shell:
 
 Install MarkDown processors:
 
-    sudo yum -y install pandoc texlive discount
+    sudo yum -y install pandoc texlive
 
 and execute `make build` in this directory!  HTML and PDF output formats are
 generated. Check with any HTML browser and PDF viewer:

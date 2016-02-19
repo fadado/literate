@@ -17,23 +17,17 @@ or simply execute `make run`.
 
 Execute
 
-    sudo yum -y install pandoc texlive discount
+    sudo yum -y install pandoc texlive
     make build
     
-HTML and PDF output formats are generated. Check with any HTML browser and PDF
-viewer:
-
-	elinks literate.sh.html
-	elinks literate.py.html
-	evince literate.sh.pdf
-	evince literate.py.pdf
-	evince literate.c.pdf
-	evince literate.c.pdf
+HTML and PDF output formats are generated: check with any HTML browser or PDF
+viewer.
 
 ## How to write programs?
 
 Write MarkDown files with the code to be executed inside triple backtick blocks.
-The supported file extensions (and related languages) are `.sh.md`, `.py.md` and `.c.md`.
+The supported file extensions (and related languages) are `.sh.md`, `.py.md`,
+`.java.md` and `.c.md`.
 
 ![That's all Folks!](Thats_all_folks.png)
 

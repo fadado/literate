@@ -13,13 +13,15 @@ C = literate.c.pdf literate.c.html
 
 all: $(SH) $(PY) $(JAVA) $(C)
 
-# required: yum install discount
-%.html: %.md
-	markdown < $< > $@
-
 # required: yum install pandoc texlive
+
+SYNTAX = -s --highlight-style pygments 
+
+%.html: %.md
+	pandoc $< $(SYNTAX) -o $@
+
 %.pdf: %.md
-	pandoc $< -o $@
+	pandoc $< $(SYNTAX) -o $@
 
 ########################################################################
 # Utilities

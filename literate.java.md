@@ -13,7 +13,7 @@ More about _literate programming_:
 
 The simplest Java program:
 
-```
+```java
 public class literate {
     public static void main(String[] args) {
         System.out.println("That's all Folks!");
@@ -35,7 +35,7 @@ Simply run this command in the Shell:
 
 Install MarkDown processors:
 
-    sudo yum -y install pandoc texlive discount
+    sudo yum -y install pandoc texlive
 
 and execute `make build` in this directory!  HTML and PDF output formats are
 generated. Check with any HTML browser and PDF viewer:

@@ -27,7 +27,7 @@ while read -r line; do
     fi
 done < "$PROGRAM" | case "$PROGRAM" in
     *.sh.md)
-        sh -
+        bash -
         ;;
     *.py.md)
         python -
