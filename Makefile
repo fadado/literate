@@ -19,7 +19,7 @@ TARGETS = $(foreach _lang,$(LANGUAGES),$(FILES))
 
 all: $(TARGETS)
 
-# required: yum install pandoc texlive
+# required packages: pandoc texlive
 
 SYNTAX = -s --highlight-style pygments 
 

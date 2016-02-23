@@ -32,7 +32,10 @@ Simply run this command in the Shell:
 
 Install MarkDown processors:
 
-    sudo yum -y install pandoc texlive
+    MANAGER=yum
+    which dnf >/dev/null 2>&1 && MANAGER=dnf
+    which apt-get >/dev/null 2>&1 && MANAGER=apt-get
+    sudo $MANAGER -y install pandoc texlive
 
 and execute `make build` in this directory!  HTML and PDF output formats are
 generated. Check with any HTML browser and PDF viewer:

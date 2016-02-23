@@ -19,7 +19,10 @@ or simply execute `make run`.
 
 Execute
 
-    sudo yum -y install pandoc texlive
+    MANAGER=yum
+    which dnf >/dev/null 2>&1 && MANAGER=dnf
+    which apt-get >/dev/null 2>&1 && MANAGER=apt-get
+    sudo $MANAGER -y install pandoc texlive
     make build
     
 HTML and PDF output formats are generated: check with any HTML browser or PDF
